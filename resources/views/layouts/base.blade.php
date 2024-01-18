@@ -23,7 +23,7 @@
       <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
       <link rel="icon" type="image/png" href="../assets/img/favicon.png">
       <title>
-        Soft UI Dashboard by Creative Tim
+        Mini-ERP
       </title>
       <!--     Fonts and icons     -->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -44,7 +44,7 @@
           <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
           <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" target="_blank">
             <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">Soft UI Dashboard</span>
+            <span class="ms-1 font-weight-bold"></span>
           </a>
         </div>
         <hr class="horizontal dark mt-0">
@@ -67,7 +67,7 @@
                     </g>
                   </svg>
                 </div>
-                <span class="nav-link-text ms-1">Dashboard</span>
+                <span class="nav-link-text ms-1">{{__('layout.dashboard')}}</span>
               </a>
             </li>
             <li class="nav-item">
@@ -87,7 +87,7 @@
                     </g>
                   </svg>
                 </div>
-                <span class="nav-link-text ms-1">Tables</span>
+                <span class="nav-link-text ms-1">{{__('layout.products')}}</span>
               </a>
             </li>
             <li class="nav-item">
@@ -107,7 +107,7 @@
                     </g>
                   </svg>
                 </div>
-                <span class="nav-link-text ms-1">Billing</span>
+                <span class="nav-link-text ms-1">{{__('layout.tags')}}</span>
               </a>
             </li>
             <li class="nav-item">
@@ -244,9 +244,9 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">@yield('page_title')</li>
               </ol>
-              <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+              <h6 class="font-weight-bolder mb-0">@yield('page_title')</h6>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
               <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -256,12 +256,6 @@
                 </div>
               </div>
               <ul class="navbar-nav  justify-content-end">
-                <li class="nav-item d-flex align-items-center">
-                  <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                    <i class="fa fa-user me-sm-1"></i>
-                    <span class="d-sm-inline d-none">Sign In</span>
-                  </a>
-                </li>
                 <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                   <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                     <div class="sidenav-toggler-inner">
@@ -369,8 +363,8 @@
         <div class="card shadow-lg ">
           <div class="card-header pb-0 pt-3 ">
             <div class="float-start">
-              <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
-              <p>See our dashboard options.</p>
+              
+              
             </div>
             <div class="float-end mt-4">
               <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">

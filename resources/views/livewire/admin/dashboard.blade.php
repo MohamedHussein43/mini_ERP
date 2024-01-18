@@ -1,5 +1,7 @@
 <div>
-    
+    @section('page_title')
+    {{__('layout.dashboard')}}
+    @endsection
 
         <div class="container-fluid py-4">
             <div class="row">
