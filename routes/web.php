@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Livewire\Admin\Dashboard;
+use App\Livewire\ProductComponent;
+use App\Livewire\TagComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +27,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
+    Route::get('/product',ProductComponent::class)->name('product');
+    Route::get('/tag',TagComponent::class)->name('tag');
 });
 Route::get('/test', [Controller::class, 'test']);
