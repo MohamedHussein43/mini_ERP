@@ -12,4 +12,5 @@ return[
     'ar_description' =>'Arabic Description',
     'edit' =>'Edit Product',
     'update' =>'Update Product',
+    'show' =>'View Product',
 ];

@@ -35,5 +35,8 @@ class Product extends Model
     public function getCreatedAtAttribute($value){
         return Carbon::parse($value)->diffForHumans();
      }
+     public function attachments(){
+        return $this->hasMany(Attachment::class, 'product_id');
+     }
 
 }
