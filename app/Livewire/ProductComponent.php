@@ -4,14 +4,17 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Product;
+use Livewire\WithPagination;
 class ProductComponent extends Component
 {
-    public $products;
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    
     public function mount(){
-        $this->products = Product::all();
+        
     }
     public function render()
     {
-        return view('livewire.product-component')->layout('layouts.base');
+        return view('livewire.product-component',['products' => Product::paginate(10),])->layout('layouts.base');
     }
 }

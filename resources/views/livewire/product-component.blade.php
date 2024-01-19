@@ -21,32 +21,40 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{{__('products.description')}}</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{__('products.price')}}</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{__('products.created_at')}}</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{__('products.manage')}}</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{__('manage.manage')}}</th>
                       <th>  </th>
                     </tr>
                   </thead>
                   <tbody>
                         @foreach ($products as $product)
                             <tr>
-                            <td>
-                                <p class="text-sm font-weight-bold mb-0">{{$product->id}}</p>
-                            </td>
-                            <td>
-                                <p class="text-sm font-weight-bold mb-0">{{$product->name}}</p>
-                            </td>
-                            <td>
-                                <p class="text-sm font-weight-bold mb-0">{{$product->description}}</p>
-                            </td>
-                            <td>
-                                <p class="text-sm font-weight-bold mb-0">{{$product->price}}</p>
-                            </td>
-                            <td>
-                                <p class="text-sm font-weight-bold mb-0">{{$product->created_at}}</p>
-                            </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">{{$product->id}}</p>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">{{$product->name}}</p>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">{{$product->description}}</p>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">{{$product->price}}</p>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">{{$product->created_at}}</p>
+                                </td>
+                                <td>
+                                    <a href="@" class="btn btn-xs btn-success">{{__('manage.edit')}}</a>
+                                    <a href="@" class="btn btn-xs btn-primary">{{__('manage.view')}}</a>
+                                </td>
                             </tr>
                         @endforeach
+                        
                   </tbody>
                 </table>
+                <div>
+                    {{ $products->links() }}
+                </div>
               </div>
             </div>
           </div>

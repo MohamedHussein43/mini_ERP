@@ -6,7 +6,4 @@ return[
     'description' =>'Description',
     'price' =>'Price',
     'created_at' =>'Created At',
-    'manage' =>'Manage',
-
-   
 ];
