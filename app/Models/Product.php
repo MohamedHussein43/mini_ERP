@@ -11,6 +11,10 @@ class Product extends Model
     public function tags(){
         return $this->hasManyThrough(Tag::class, ProductTag::class,'product_id', 'tag_id');
     }
+    public function attrByLocale($locale = 'en', $attr = 'name') {
+        $arr = json_decode($this->getRawOriginal($attr),true);
+        return $arr[$locale];
+    }
     public function getNameAttribute($value){
         $arr = json_decode($value, true);
         if (app()->isLocale('ar'))

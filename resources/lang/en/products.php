@@ -11,4 +11,5 @@ return[
     'en_description' =>'English Description',
     'ar_description' =>'Arabic Description',
     'edit' =>'Edit Product',
+    'update' =>'Update Product',
 ];
