@@ -15,6 +15,6 @@ class ProductComponent extends Component
     }
     public function render()
     {
-        return view('livewire.product-component',['products' => Product::paginate(10),])->layout('layouts.base');
+        return view('livewire.product-component',['products' => Product::orderBy('id','desc')->paginate(10),])->layout('layouts.base');
     }
 }
