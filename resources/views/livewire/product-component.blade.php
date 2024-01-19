@@ -3,7 +3,7 @@
         {{__("layout.products")}}
     @endsection
     @section('buttons')
-    <a href="{{route('product/create')}}" class="btn btn-primary">{{__('products.create')}}</a>
+    <a href="{{route('product.create')}}" class="btn btn-primary">{{__('products.create')}}</a>
     @endsection
     <div class="row">
         <div class="col-12">
@@ -44,8 +44,8 @@
                                     <p class="text-sm font-weight-bold mb-0">{{$product->created_at}}</p>
                                 </td>
                                 <td>
-                                    <a href="@" class="btn btn-xs btn-success">{{__('manage.edit')}}</a>
-                                    <a href="@" class="btn btn-xs btn-primary">{{__('manage.view')}}</a>
+                                    <a href="{{route('product.edit',['id'=>$product->id])}}" class="btn btn-xs btn-success">{{__('manage.edit')}}</a>
+                                    <a href="{{route('product.view',['id'=>$product->id])}}" class="btn btn-xs btn-primary">{{__('manage.view')}}</a>
                                 </td>
                             </tr>
                         @endforeach

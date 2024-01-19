@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\ProductComponent;
 use App\Livewire\product\CreateProductComponent;
+use App\Livewire\product\EditProductComponent;
+use App\Livewire\product\ViewProductComponent;
 use App\Livewire\TagComponent;
 
 /*
@@ -28,7 +30,9 @@ Route::middleware([
     Route::get('/',Dashboard::class);
     Route::get('/dashboard',Dashboard::class)->name('dashboard');
     Route::get('/product',ProductComponent::class)->name('product');
-    Route::get('/product/create',CreateProductComponent::class)->name('product/create');
+    Route::get('/product/create',CreateProductComponent::class)->name('product.create');
+    Route::get('/product-edit/{id}',EditProductComponent::class)->name('product.edit');
+    Route::get('/product/{id}',ViewProductComponent::class)->name('product.view');
     Route::get('/tag',TagComponent::class)->name('tag');
 });
 Route::get('/test', [Controller::class, 'test']);

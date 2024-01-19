@@ -1,3 +1,5 @@
 <div>
-    {{-- In work, do what you enjoy. --}}
+    @section('page_title')
+        {{__("products.create")}}
+    @endsection
 </div>
