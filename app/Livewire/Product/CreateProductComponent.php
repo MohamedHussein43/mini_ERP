@@ -5,14 +5,18 @@ use Livewire\Attributes\Rule;
 use Livewire\Component;
 use App\Models\Product;
 use App\Events\Product\ProductHassBeenCreatendEvent;
+use Livewire\WithFileUploads;
 
 class CreateProductComponent extends Component
 {
+    use WithFileUploads;
+
     public $en_name;
     public $ar_name;
     public $en_description;
     public $ar_description;
     public $price;
+    public $attachments;
     public function creat_product(){
         $validated = $this->validate([
             'en_name' => 'required|min:2',
@@ -20,6 +24,8 @@ class CreateProductComponent extends Component
             'en_description' => 'required|min:10',
             'ar_description' => 'required|min:10',
             'price' => 'required|numeric',
+            'attachments' => 'required|array',
+            'attachments.*' => 'required|file',
         
         ]);
         if($validated){
@@ -44,6 +50,7 @@ class CreateProductComponent extends Component
         $this->en_description="";
         $this->ar_description="";
         $this->ptice=0;
+        $this->attachments= array();
     }
     public function render()
     {

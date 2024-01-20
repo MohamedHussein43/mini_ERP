@@ -12,7 +12,7 @@
                         @if(Session::has('danger'))
                             <div class="alert alert-danger" role="alert">{{Session::get('danger')}}</div>
                         @endif
-                    <form wire:submit.prevent="creat_product">
+                    <form wire:submit.prevent="creat_product" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <div class="row">
@@ -55,6 +55,18 @@
                                 <div class="col-md-6">
                                     <input required wire:model.prevent="price" value="{{old('price')}}" type="number" class="form-control" placeholder="{{__('products.price')}}" name="price">
                                     @error('price')
+                                        {{$message}}
+                                    @enderror                                
+                                </div>
+                            
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input required wire:model.prevent="attachments" type="file" multiple="multiple" class="form-control" name="attachments[]">
+                                    @error('attachments')
                                         {{$message}}
                                     @enderror                                
                                 </div>
