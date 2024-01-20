@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Product;
 use App\Events\Product\ProductHassBeenCreatendEvent;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
 
 class CreateProductComponent extends Component
 {
@@ -29,19 +30,38 @@ class CreateProductComponent extends Component
         
         ]);
         if($validated){
-            $product = new Product();
-            $product->name = json_encode([
-                'ar' => $this->ar_name,
-                'en' => $this->en_name,
-            ]);
-            $product->description = json_encode([
-                'ar' => $this->ar_description,
-                'en' => $this->en_description,
-            ]);
-            $product->price = $this->price;
-            $product->save();
-            event(new ProductHassBeenCreatendEvent($product));
-            session()->flash('message','Product has been created successfully!');
+            //dd($this->attachments);
+            DB::beginTransaction();
+            try{
+                $product = new Product();
+                $product->name = json_encode([
+                    'ar' => $this->ar_name,
+                    'en' => $this->en_name,
+                ]);
+                $product->description = json_encode([
+                    'ar' => $this->ar_description,
+                    'en' => $this->en_description,
+                ]);
+                $product->price = $this->price;
+                $product->save();
+                foreach ($this->attachments as $key => $file) {
+                    $is_master = false;
+                    if ($key == 0)
+                        $is_master = true;                    
+                    $path = $file->store('attachments');
+                    $product->attachments()->create([
+                        'url' => $path,
+                        'is_master' => $is_master
+                    ]);
+                }
+                DB::commit();
+                event(new ProductHassBeenCreatendEvent($product));
+                session()->flash('message','Product has been created successfully!');
+            }catch(Exception $e){
+                DB::rollback();
+                session()->flash('danger','Some Things Went Wrong!');
+            }
+           
         }
     }
     public function mount(){

@@ -7,11 +7,11 @@
             <div class="card mb-4">
                 <div class="card-body">
                     @if(Session::has('message'))
-                            <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
-                        @endif
-                        @if(Session::has('danger'))
-                            <div class="alert alert-danger" role="alert">{{Session::get('danger')}}</div>
-                        @endif
+                        <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                    @endif
+                    @if(Session::has('danger'))
+                        <div class="alert alert-danger" role="alert">{{Session::get('danger')}}</div>
+                    @endif
                     <form wire:submit.prevent="creat_product" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
