@@ -7,7 +7,7 @@ use App\Models\Product;
 use App\Events\Product\ProductHassBeenCreatendEvent;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Carbon;
 class CreateProductComponent extends Component
 {
     use WithFileUploads;
@@ -48,14 +48,19 @@ class CreateProductComponent extends Component
                     $is_master = false;
                     if ($key == 0)
                         $is_master = true;                    
-                    $path = $file->store('attachments');
+                    //$path = $file->store('attachments');
+                   
+                    $path = $file->store('products','public');
+                   
                     $product->attachments()->create([
                         'url' => $path,
                         'is_master' => $is_master
                     ]);
                 }
+                $this->reset();
+                //$this->mount();
                 DB::commit();
-                event(new ProductHassBeenCreatendEvent($product));
+                //event(new ProductHassBeenCreatendEvent($product));
                 session()->flash('message','Product has been created successfully!');
             }catch(Exception $e){
                 DB::rollback();
@@ -64,6 +69,7 @@ class CreateProductComponent extends Component
            
         }
     }
+
     public function mount(){
         $this->en_name="";
         $this->ar_name="";
@@ -72,6 +78,7 @@ class CreateProductComponent extends Component
         $this->ptice=0;
         $this->attachments= array();
     }
+  
     public function render()
     {
         return view('livewire.product.create-product-component')->layout('layouts.base');

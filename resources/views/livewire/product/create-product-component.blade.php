@@ -35,13 +35,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <textarea required class="form-control" wire:model.prevent="en_description" placeholder="{{__('products.en_description')}}" name="en_description">{{old('en_description')}}</textarea>
+                                    <textarea required class="form-control" wire:model.prevent="en_description" placeholder="{{__('products.en_description')}}" name="en_description"></textarea>
                                     @error('en_description')
                                         {{$message}}
                                     @enderror   
                                 </div>
                                 <div class="col-md-6">
-                                    <textarea required class="form-control" wire:model.prevent="ar_description" placeholder="{{__('products.ar_description')}}" name="ar_description">{{old('ar_description')}}</textarea>
+                                    <textarea required class="form-control" wire:model.prevent="ar_description" placeholder="{{__('products.ar_description')}}" name="ar_description"></textarea>
                                     @error('ar_description')
                                         {{$message}}
                                     @enderror   
@@ -64,11 +64,17 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <input required wire:model.prevent="attachments" type="file" multiple="multiple" class="form-control" name="attachments[]">
+                                <div class="col-md-6" >
+                                    <input wire:model.defer="attachments" value="{{old('attachments')}}"type="file" multiple="multiple" name="attachments[]">
                                     @error('attachments')
                                         {{$message}}
-                                    @enderror                                
+                                    @enderror          
+                                    @if($attachments)
+                                        @foreach ($attachments as $imag)
+                                            <img src="{{$imag->temporaryUrl()}}" width="120"/>
+                                        @endforeach
+                                        
+                                    @endif                      
                                 </div>
                             
                             </div>

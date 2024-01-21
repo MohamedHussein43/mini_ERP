@@ -58,9 +58,18 @@
                                         {{$message}}
                                     @enderror                                
                                 </div>
-                            
                             </div>
                         </div>
+
+                         
+                        <div class="">
+                            <div class="row">
+                                @foreach ($product->attachments as $file)
+                                    <div class="col-md-3"> <img src="{{ asset('storage/' . $file->url) }}" class="img-thumbnail"> </div>
+                                @endforeach
+                            </div>
+                        </div>
+
 
                         <div class="">
                             <div class="row">
