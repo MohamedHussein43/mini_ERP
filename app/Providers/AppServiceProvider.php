@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Observers\TagObserver;
+use App\Observers\ProductObserver;
+use App\Models\Product;
+use App\Models\Tag;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -19,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Product::observe(ProductObserver::class);
+        Tag::observe(TagObserver::class);
     }
 }

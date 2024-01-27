@@ -1,0 +1,7 @@
+.img-cover .buttons {
+    position: absolute;
+    padding: 28px;
+    width: 290px;
+    height: 100%;
+    background-color: rgba(121, 108, 108, 0.332);
+}

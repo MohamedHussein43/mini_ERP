@@ -61,7 +61,7 @@ class CreateProductComponent extends Component
                 //$this->mount();
                 DB::commit();
                 //event(new ProductHassBeenCreatendEvent($product));
-                session()->flash('message','Product has been created successfully!');
+                
             }catch(Exception $e){
                 DB::rollback();
                 session()->flash('danger','Some Things Went Wrong!');

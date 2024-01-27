@@ -62,11 +62,45 @@
                         </div>
 
                          
-                        <div class="">
+                        <div class="card" style="margin-bottom: 10px">
                             <div class="row">
                                 @foreach ($product->attachments as $file)
-                                    <div class="col-md-3"> <img src="{{ asset('storage/' . $file->url) }}" class="img-thumbnail"> </div>
+                                    <div class="col-md-3" wire:key="{{ $file->id }}"> 
+                                        <div class="img-cover">
+                                            <div class="buttons">
+                                                @if ($file->is_master == false)
+                                                    <a href="#" class="btn btn-danger btn-xs" 
+                                                    wire:click.prevent="remove_image({{$file->id}})"
+                                                    wire:confirm="Confirm Removing {{$product->name}} Image!"                                                     
+                                                    >{{__('attachments.remove')}}</a>
+
+                                                    <a href="#" class="btn btn-primary btn-xs" 
+                                                    wire:click.prevent="set_master({{$file->id}})"
+                                                    wire:confirm="Are you sure?"                                                     
+                                                    >{{__('attachments.set-as-master')}}</a>
+                                                @endif
+                                            </div>
+                                            <img src="{{ asset('storage/' . $file->url) }}" class="img-thumbnail"> 
+                                        </div>
+                                    </div>
                                 @endforeach
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6" >
+                                    <input wire:model.defer="attachments"type="file" multiple="multiple" name="attachments[]">
+                                    @error('attachments')
+                                        {{$message}}
+                                    @enderror          
+                                    @if($attachments)
+                                        @foreach ($attachments as $imag)
+                                            <img src="{{$imag->temporaryUrl()}}" width="120"/>
+                                        @endforeach
+                                        
+                                    @endif                      
+                                </div>
+                            
                             </div>
                         </div>
 

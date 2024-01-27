@@ -8,6 +8,9 @@ use App\Livewire\product\CreateProductComponent;
 use App\Livewire\product\EditProductComponent;
 use App\Livewire\product\ViewProductComponent;
 use App\Livewire\TagComponent;
+use App\Livewire\tag\CreateTagComponent;
+use App\Livewire\tag\EditTagComponent;
+use App\Livewire\tag\ViewTagComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,11 @@ Route::middleware([
     Route::get('/product/create',CreateProductComponent::class)->name('product.create');
     Route::get('/product-edit/{id}',EditProductComponent::class)->name('product.edit');
     Route::get('/product/{id}',ViewProductComponent::class)->name('product.view');
+
+    //                        Tages
     Route::get('/tag',TagComponent::class)->name('tag');
+    Route::get('/tag/create',CreateTagComponent::class)->name('tag.create');
+    Route::get('/tag-edit/{id}',EditTagComponent::class)->name('tag.edit');
+    Route::get('/tag/{id}',ViewTagComponent::class)->name('tag.view');
 });
 Route::get('/test', [Controller::class, 'test']);
