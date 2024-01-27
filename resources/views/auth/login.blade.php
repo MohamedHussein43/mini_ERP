@@ -106,7 +106,7 @@
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     {{__('auth.dont_have_account')}}
-                    <a href="javascript:;" class="text-info text-gradient font-weight-bold">{{trans('auth.sine_up')}}</a>
+                    <a href="{{url('/register')}}" class="text-info text-gradient font-weight-bold">{{trans('auth.sine_up')}}</a>
                   </p>
                 </div>
               </div>
